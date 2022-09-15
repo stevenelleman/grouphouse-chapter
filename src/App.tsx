@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import Blurbs from './components/Blurbs';
+import {HouseInfo} from './components/Blurb';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const houses: HouseInfo[] = [
+    {
+      name: "Yolohouse",
+      blurb: "Yolo is great.",
+    },
+    {
+      name: "Casa Bonita",
+      blurb: "We're a hacienda!",
+    }
+  ]
+
+  return <>
+    <div className="app">
+      <Blurbs houses={houses}/>
     </div>
-  );
+  </>;
 }
 
 export default App;
