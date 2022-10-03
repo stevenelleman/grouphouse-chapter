@@ -26,11 +26,11 @@ jobs:
         run: npm install
       - name: npm run build
         run: |
-          echo ${{ pre-ci.outputs.onmain }}  
+          echo ${{ needs.pre-ci.outputs.onmain }}  
           npm run build
 
       - name: aws login
-        if: pre-ci.outputs.onmain == true
+        if: needs.pre-ci.outputs.onmain == true
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
