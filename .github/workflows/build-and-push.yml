@@ -24,3 +24,5 @@ jobs:
           aws-region: us-west-2
       - name: sync to bucket
         run: aws s3 sync ./build/ s3://berkeley.grouphouse.io --delete    
+
+
