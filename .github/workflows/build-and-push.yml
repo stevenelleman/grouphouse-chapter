@@ -37,6 +37,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
           aws-region: us-west-2
       - name: sync to bucket
+        if: needs.pre-ci.outputs.onmain == true
         run: aws s3 sync ./build/ s3://berkeley.grouphouse.io --delete    
 
 
