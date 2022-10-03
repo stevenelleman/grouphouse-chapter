@@ -1,12 +1,20 @@
 name: "Build and push"
 
-on: [push]
+on: [push, pull_request]
+
 
 jobs:
-  build-and-push:
+  pre-ci:
     runs-on: ubuntu-latest
-
-
+    outputs: 
+      onmain: ${{ steps.onmain.outputs.onmain }}
+    steps:
+      - name: Checking if on main
+        id: onmain
+        run: echo "::set-output name=onmain::${{ github.ref == 'refs/heads/main' }}"
+  build-and-push:
+    needs: pre-ci
+    runs-on: ubuntu-latest
     steps:
       - name: Checking out code
         uses: actions/checkout@v3
@@ -17,8 +25,12 @@ jobs:
       - name: npm install
         run: npm install
       - name: npm run build
-        run: npm run build
+        run: |
+          echo ${{ pre-ci.outputs.onmain }}  
+          npm run build
+
       - name: aws login
+        if: pre-ci.outputs.onmain == true
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
