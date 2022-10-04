@@ -9,13 +9,14 @@ type PropsType = {
 
 const Blurbs = ({houses}: PropsType) => {
     return <>
-        <div className="blurbs">
             {
-                houses.map((house, index) =>
-                  <Blurb house={house} index={index}/>
+                houses.map(({name, blurb, imagePath}: HouseInfo) =>
+                  <>
+                  <Blurb name={name} blurb={blurb} imagePath={imagePath}/>
+                  <br/>
+                  </>
                 )
             }
-        </div>
     </>;
 }
 
