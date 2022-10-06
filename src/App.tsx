@@ -16,23 +16,19 @@ const App = () => {
     if (width < 350) {
       setBlurbWidth(width)
     } 
-    
   }, [width, setBlurbWidth])
 
-
+  
+  
 
   const defaultHouses: HouseInfo[] = [
     {
       name: "Yolohouse",
       blurb: "Yolo is great.",
-      imagePaths: ['/outside.jpeg', '/outside.jpeg']
+      imagePaths: [1,2,3,4,5,6,7].map(i => `/houses/yolo/${i}.jpeg`)
 
     },
-    {
-      name: "Casa Bonita",
-      blurb: "We're a hacienda!",
-      imagePaths: ['/outside.jpeg', '/outside.jpeg']
-    }
+    
   ]
   const [houses, setHouses] = useState<any>(defaultHouses)
   const onClick = () => {
