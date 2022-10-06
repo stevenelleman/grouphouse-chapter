@@ -1,21 +1,37 @@
-import React, {useState} from 'react';
-import Blurbs from './components/Blurbs';
-import {HouseInfo} from './components/Blurb';
-
+import React, {useEffect, useState} from 'react';
+import {Blurb} from './components/Blurb';
+import {HouseInfo} from './types';
+import {useWindowWidth} from '@react-hook/window-size'
 import './App.css';
 
 const App = () => {
+  const width = useWindowWidth()
+
+  const [blurbWidth, setBlurbWidth] = useState(350)
+  const [blurbsPerRow, setBlurbsPerRow] = useState(1)
+
+  const maxBlurbs = 4;
+
+  useEffect(() => {
+    if (width < 350) {
+      setBlurbWidth(width)
+    } 
+    
+  }, [width, setBlurbWidth])
+
+
+
   const defaultHouses: HouseInfo[] = [
     {
       name: "Yolohouse",
       blurb: "Yolo is great.",
-      imagePath: '/outside.jpeg'
+      imagePaths: ['/outside.jpeg', '/outside.jpeg']
 
     },
     {
       name: "Casa Bonita",
       blurb: "We're a hacienda!",
-      imagePath: '/outside.jpeg'
+      imagePaths: ['/outside.jpeg', '/outside.jpeg']
     }
   ]
   const [houses, setHouses] = useState<any>(defaultHouses)
@@ -24,11 +40,18 @@ const App = () => {
   }
 
   return <>
-    <div className="app" style={{height: "100vh", overflowY: 'auto', alignItems:'center'}}>
-      {/* <div style={{width:360}}> */}
-
-      <Blurbs houses={houses}/>
-      {/* </div> */}
+    <div className="app" style={{height: "100vh", display: 'flex', flexDirection:'row', flexWrap: 'wrap'}}>
+    {
+                houses.map(({name, blurb, imagePaths}: HouseInfo) =>
+                  <>
+                  <div style={{margin: 'auto', padding: '5px'}}>
+                    <Blurb blurbWidth={blurbWidth} name={name} blurb={blurb} imagePaths={imagePaths}/>
+                  
+                  </div>
+                    
+                  </>
+                )
+            }
     </div>
     <button style={{position:'absolute', top:10, right:10}} onClick={onClick}>click to add</button>
   </>;
