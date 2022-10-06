@@ -45,3 +45,12 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 # berkeley-grouphouse
+
+## Infra Setup
+1. Set up s3 bucket
+2. Create policy for only s3 bucket 
+3. Make user that uses policy, generate key pair
+4. Set up cloudfront distribution for s3 bucket 
+5. Make TLS cert for berkeley.grouphouse.io, whatis.grouphouse.io 
+6. Point cloudfront at s3 bucket, attach TLS cert to cloudfront
+7. Make Github Action for re-building changes, pushing changes to s3 bucket
