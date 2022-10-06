@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 // import Card from '@mui/material/Card'
 // import { CardContent } from '@mui/material';
-import {createStyles, Image, Card, Text, Group, Button} from '@mantine/core'
+import {createStyles, Image, Card, Text, Group} from '@mantine/core'
 import {Carousel} from '@mantine/carousel';
 
 import '../App.css';

@@ -8,9 +8,6 @@ const App = () => {
   const width = useWindowWidth()
 
   const [blurbWidth, setBlurbWidth] = useState(350)
-  const [blurbsPerRow, setBlurbsPerRow] = useState(1)
-
-  const maxBlurbs = 4;
 
   useEffect(() => {
     if (width < 350) {
