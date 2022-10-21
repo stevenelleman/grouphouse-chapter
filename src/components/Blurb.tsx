@@ -1,11 +1,11 @@
 import React from 'react';
 // import Card from '@mui/material/Card'
 // import { CardContent } from '@mui/material';
-import {createStyles, Image, Card, Text, Group} from '@mantine/core'
+import {createStyles, Image, Card, Text} from '@mantine/core'
 import {Carousel} from '@mantine/carousel';
 
 import '../App.css';
-import type {HouseInfo} from '../types'
+import type {IBlurb} from '../types'
 
 const useStyles = createStyles((theme:any, _params:any, getRef:any) => ({
     price: {
@@ -39,18 +39,18 @@ const useStyles = createStyles((theme:any, _params:any, getRef:any) => ({
 
   }));
 
-export const Blurb = ({name, blurb, imagePaths, blurbWidth}: HouseInfo & {blurbWidth: number}) => {
+export const Blurb = ({title, blurb, imagePaths, blurbWidth, calendar, housingApplication, contactLink, name}: IBlurb) => {
     const {classes} = useStyles({param: undefined})
-
+    console.log(imagePaths)
     const slides = imagePaths.map((image:string) => (
         <Carousel.Slide key={image}>
 
-            <Image src={image}></Image>
+            <Image src={`/houses/${name}/${image}`}></Image>
         </Carousel.Slide>
     ))
     return <>
 
-       <Card radius="md" withBorder p="xl" style={{width: 350}}>
+       <Card radius="md" withBorder p="xl" style={{width: blurbWidth}}>
       <Card.Section>
         <Carousel
           withIndicators
@@ -65,36 +65,34 @@ export const Blurb = ({name, blurb, imagePaths, blurbWidth}: HouseInfo & {blurbW
         </Carousel>
       </Card.Section>
 
-      <Group position="apart" mt="lg">
+      <div style={{display: 'flex', flexDirection: "column", alignItems: "start", margin: "auto"}}>
         <Text weight={500} size="lg">
-          {name}
+          {title}
         </Text>
 
-        {/* <Group spacing={5}>
-          <IconStar size={16} />
-          <Text size="xs" weight={500}>
-            4.78
-          </Text>
-        </Group> */}
-      </Group>
+        
+        { housingApplication && 
+            <Text size={"md"}>
+            <a href={housingApplication}>Housing Application</a>
+        </Text>
+        }
+        { 
+            calendar && <Text size='md'>
+                <a href={calendar}>House Calendar</a>
+            </Text>
+        }
+
+        {
+            contactLink && <Text size='md'>
+                <a href={contactLink}>Contact Us</a>
+            </Text>
+        }
+      </div>
 
       <Text size="sm" color="dimmed" mt="sm">
         {blurb}
       </Text>
 
-      {/* <Group position="apart" mt="md">
-        <div>
-          <Text size="xl" span weight={500} className={classes.price}>
-            397$
-          </Text>
-          <Text span size="sm" color="dimmed">
-            {' '}
-            / night
-          </Text>
-        </div>
-
-        <Button radius="md">Book now</Button>
-      </Group> */}
     </Card>
     </>;
 }

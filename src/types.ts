@@ -1,13 +1,14 @@
 
-export type HouseInfo = {
-    name: string,
+export interface HouseInfo {
+    title: string,
     blurb: string,
     imagePaths: string[],
-    calendar_link?: string, // TODO: add a link type for validation
-    application_link?: string,
+    calendar?: string, // TODO: add a link type for validation
+    contactLink?:string,
+    housingApplication?: string,
 }
 
-type TBlurb = {
-    house: HouseInfo,
-    index: number,
-};
+export interface IBlurb extends HouseInfo {
+    name: string;
+    blurbWidth: number;
+}

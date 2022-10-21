@@ -3,6 +3,7 @@ import {Blurb} from './components/Blurb';
 import {HouseInfo} from './types';
 import {useWindowWidth} from '@react-hook/window-size'
 import './App.css';
+import houses from './data/db.json'
 
 const App = () => {
   const width = useWindowWidth()
@@ -18,35 +19,22 @@ const App = () => {
   
   
 
-  const defaultHouses: HouseInfo[] = [
-    {
-      name: "Yolohouse",
-      blurb: "Yolo is great.",
-      imagePaths: [1,2,3,4,5,6,7].map(i => `/houses/yolo/${i}.jpeg`)
-
-    },
-    
-  ]
-  const [houses, setHouses] = useState<any>(defaultHouses)
-  const onClick = () => {
-    setHouses((prevState:any) => [...prevState, defaultHouses[0]])
-  }
 
   return <>
     <div className="app" style={{height: "100vh", display: 'flex', flexDirection:'row', flexWrap: 'wrap'}}>
     {
-                houses.map(({name, blurb, imagePaths}: HouseInfo) =>
-                  <>
-                  <div style={{margin: 'auto', padding: '5px'}}>
-                    <Blurb blurbWidth={blurbWidth} name={name} blurb={blurb} imagePaths={imagePaths}/>
+                Object.entries(houses).map(([name, house]: [string, HouseInfo]) => {
+                  const {title, blurb, imagePaths, housingApplication, calendar, contactLink } = house
+                  console.log(house)
+                  if (house !== undefined) {
+                    return <div key={`${title}-blurb`} style={{margin: 'auto', padding: '5px'}}>
+                    <Blurb name={name} blurbWidth={blurbWidth} title={title} blurb={blurb} imagePaths={imagePaths} housingApplication={housingApplication} calendar={calendar} contactLink={contactLink}/>
                   
                   </div>
-                    
-                  </>
-                )
+                  }
+                })
             }
     </div>
-    <button style={{position:'absolute', top:10, right:10}} onClick={onClick}>click to add</button>
   </>;
 }
 

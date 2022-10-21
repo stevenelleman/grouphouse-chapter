@@ -1,0 +1,11 @@
+{
+    "yolo": {
+        "imagePaths": ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg"],
+        "title": "Yolohouse",
+        "blurb": "This is the dankest house, be jealous fool.",
+        "contactLink": "http://<contact-form-link>",
+        "housingApplication": "http://<house-app-link>",
+        "calendar": "http://<google-calendar-link>"
+
+    }
+}
