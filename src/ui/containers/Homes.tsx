@@ -44,7 +44,7 @@ class Home extends React.Component<HouseProps> {
     const {name, description, imageDirectory, contact, calendarLink, housingAppLink, websiteLink} = this.props.args;
     return <div className="house-container" id="homes">
       <div className="house-container-column-wide">
-        <img className="house-banner-image" src={`images/houses/${imageDirectory}/banner.jpeg`}/> {/* TODO: Add alt */}
+        <img className="house-banner-image" alt="" src={`images/houses/${imageDirectory}/banner.jpeg`}/>
       </div>
 
       <div className="house-container-column-narrow">
@@ -87,7 +87,7 @@ class Home extends React.Component<HouseProps> {
               </div>
           }
           {
-            contact == "" ? <></> :
+            contact === "" ? <></> :
               <div className="house-description-section">
                   Reach Out
               </div>
