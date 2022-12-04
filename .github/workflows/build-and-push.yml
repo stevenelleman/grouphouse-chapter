@@ -12,10 +12,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - name: npm install
-        run: npm install
-      - name: npm run build
-        run: npm run build
+      - name: yarn install
+        run: yarn install
+      - name: yarn run build
+        run: yarn run build
       - name: aws login
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -23,4 +23,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
           aws-region: us-west-2
       - name: sync to bucket
-        run: aws s3 sync ./build/ s3://berkeley.grouphouse.io --delete    
+        run: aws s3 sync ./build/ s3://berkeley.grouphouse.io --delete
