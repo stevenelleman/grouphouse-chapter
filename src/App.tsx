@@ -1,31 +1,36 @@
-import React, {useState} from 'react';
-import Blurbs from './components/Blurbs';
-import {HouseInfo} from './components/Blurb';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
-import './App.css';
+// Import all styles
+import './styles/App.css';
 
-const App = () => {
-  const defaultHouses: HouseInfo[] = [
-    {
-      name: "Yolohouse",
-      blurb: "Yolo is great.",
-    },
-    {
-      name: "Casa Bonita",
-      blurb: "We're a hacienda!",
-    }
-  ]
-  const [houses, setHouses] = useState<any>(defaultHouses)
-  const onClick = () => {
-    setHouses((prevState:any) => [...prevState, defaultHouses[0]])
+// Import fonts
+import './styles/fonts/Fonts.css';
+
+import { Topbar } from './ui/containers/Topbar';
+// @ts-ignore
+import { Storyline } from './ui/containers/Storyline';
+
+type StateType = {};
+class App extends React.Component<unknown, StateType> {
+  render() {
+    return (
+      <div className="app">
+        <Router>
+          <Switch>        
+            <Route exact path="/">
+              <Topbar />
+              <Storyline />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    );
   }
-
-  return <>
-    <div className="app">
-      <Blurbs houses={houses}/>
-    </div>
-    <button style={{position:'absolute', top:10, right:10}} onClick={onClick}>click to add</button>
-  </>;
 }
 
 export default App;
