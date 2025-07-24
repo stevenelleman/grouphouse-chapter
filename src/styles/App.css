@@ -45,7 +45,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
 }
 
 #login-form-outer-container {
-    background-image: url("/images/grouphouse-flower.jpg");
+    background-image: url("../../public/images/grouphouse-flower.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -56,7 +56,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
 }
 
 #registration-form-outer-container {
-    background-image: url("/images/grouphouse-peaches.jpg");
+    background-image: url("../../public/images/grouphouse-peaches.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -77,7 +77,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     border-style: ridge;
 }
 .storyline-intro-image {
-    background-image: url("/images/grouphouse-berkeley.png");
+    background-image: url("../../public/images/grouphouse-berkeley.png");
     margin: auto;
     background-size: cover;
     clear: both;
@@ -491,7 +491,7 @@ ul li ul.header-dropdown li{
 }
 
 .community-image {
-    background-image:  url("/images/grouphouse-community.png");
+    background-image:  url("../../public/images/grouphouse-community.png");
     z-index: 0;
     background-size: cover;
     width: 100%;
