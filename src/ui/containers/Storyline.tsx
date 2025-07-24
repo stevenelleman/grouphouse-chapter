@@ -4,9 +4,7 @@ import {Homes} from "./Homes";
 
 import Typewriter from "typewriter-effect";
 
-type PropsType = {};
-
-export class Storyline extends React.Component<PropsType> {
+export class Storyline extends React.Component<unknown> {
   render() {
     return (
       <div className="storyline-container">

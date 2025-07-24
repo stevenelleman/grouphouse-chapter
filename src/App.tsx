@@ -12,11 +12,10 @@ import './styles/App.css';
 import './styles/fonts/Fonts.css';
 
 import { Topbar } from './ui/containers/Topbar';
-// @ts-ignore
+
 import { Storyline } from './ui/containers/Storyline';
 
-type StateType = {};
-class App extends React.Component<unknown, StateType> {
+class App extends React.Component<unknown, unknown> {
   render() {
     return (
       <div className="app">
